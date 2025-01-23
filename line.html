@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard with Chart</title>
+  <link rel="stylesheet" href="line.css">
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+  </header><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li>Overview</li>
+      <li>Reports</li>
+      <li>Performance</li>
+      <li>Settings</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <section class="filters">
+      <div class="filter-item">
+        <label for="age-group">Age Group:</label>
+        <select id="age-group">
+          <option value="All">All</option>
+          <option value="18-25">18-25</option>
+          <option value="25-50">25-50</option>
+          <option value="50+">50+</option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <label for="gender">Gender:</label>
+        <select id="gender">
+          <option value="All">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <label for="date-range">Date Range:</label>
+        <input type="date" id="start-date"> to 
+        <input type="date" id="end-date">
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>1,21,234</p>
+      </div>
+      <div class="card">
+        <h3>Sales</h3>
+        <p>$1,10,00,000</p>
+      </div>
+      <div class="card">
+        <h3>Tasks Completed</h3>
+        <p>85%</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Bar Chart</h2>
+      <div class="bar-chart">
+        <div class="bar" style="height: 80%;" >Jan</div>
+        <div class="bar" style="height: 60%;" >Feb</div>
+        <div class="bar" style="height: 90%;" >Mar</div>
+        <div class="bar" style="height: 50%;" >Apr</div>
+        <div class="bar" style="height: 70%;" >May</div>
+        <div class="bar" style="height: 85%;" >Jun</div>
+        <div class="bar" style="height: 75%;" >Jul</div>
+        <div class="bar" style="height: 45%;" >Aug</div>
+        <div class="bar" style="height: 85%;" >Sep</div>
+      </div>
+    </div>
+
+    <!-- Dynamic Line Chart -->
+    <div class="chart-container">
+      <h2 style="font-family: 'Arial', sans-serif;">Dynamic Line Chart</h2>
+      <canvas id="myLineChart"></canvas>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 Dashboard. Bindiya Vishwakarma</p>
+  </div>
+
+  <!-- Chart.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('myLineChart').getContext('2d');
+    const myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'], // X-axis labels
+        datasets: [{
+          label: 'Monthly Sales',
+          data: [10, 50, 90, 40, 25, 65],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          tension: 0.4 
+        }] 
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Dynamic Line Chart (Chart.js)' }
+        },
+        scales: {
+          x: { beginAtZero: true },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
